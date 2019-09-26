@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filtros</title>
+</head>
+<body>
+    <main id='app'>
+        <input type="text" v-model="buscar" placeholder="Buscador" size="50">
+        <table>
+            <td v-for="campo in campos">{{campo | capitalize}}</td>
+            <tr v-for="item in datosFiltrados">
+                <td>{{item.name.toUpperCase()}}</td>
+                <td>{{item.email.toLowerCase()}}</td>
+                <td>{{item.address.city}}</td>
+                <td>Lat: {{item.address.geo.lat}} Lon: {{item.address.geo.lng}}
+                </td>
+                <td>{{'$' + precio.toFixed(2)}}</td>
+                <td>{{texto |vermas(15,'Ver Mas..') |capitalize}}</td>
+            </tr>
+        </table>
+
+        
+
+    </main>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js" integrity="sha256-e9WxLR4DOP5XKMT4mflXVovZS4mVdiMkAFSDHF+6q80=" crossorigin="anonymous"></script>
+    <script>
+
+        Vue.filter('capitalize',function(valor){
+            return valor[0].toUpperCase()+valor.slice(1)
+        })
+
+        Vue.filter('vermas',function(valor,tamaño,sufijo){
+            return valor.substring(0,tamaño) + sufijo;
+        })
+
+        const url= 'https://jsonplaceholder.typicode.com/users'
+        const app = new Vue({
+            el:'#app',
+            data:{
+                datos:[],
+                campos:['nombre','email','ciudad','localizacion','precio','texto'],
+                precio:1234,
+                texto: 'lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid voluptatem minus sit dolores aperiam iste modi alias? Numquam quos omnis, praesentium quod voluptate, soluta laborum quia obcaecati facilis suscipit explicabo.',
+                buscar: ''
+            },
+            methods:{
+                usuarios(){
+                    this.$http.get(url).then(function(respuesta){
+                        this.datos = respuesta.data
+                    })
+                }
+            },
+            created(){
+                this.usuarios()
+            },
+            computed:{
+                datosFiltrados(){
+                    return this.datos.filter((filtro)=>{
+                        return filtro.name.toUpperCase().match(this.buscar.toUpperCase()) || filtro.email.toUpperCase().match(this.buscar.toUpperCase())
+                    });
+                }
+            }
+        })
+    </script>
+</body>
+</html>
