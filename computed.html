@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Computed</title>
+    <style>
+        .femenino{
+            color: pink;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 25px;
+            font-weight: bolder;
+        }
+        .masculino{
+            color: blue;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 15px;
+
+        }
+    </style>
 </head>
 <body>
     
@@ -13,7 +27,19 @@
         <input type="number" v-model="edad">
         <div v-html="rangoEdad"></div><br>
         
-        <h3>{{contanenacion}}</h3>
+        <label :class="genero" >{{contanenacion}}</label>
+
+        <input type="radio" v-model="gen" value="f">Femenino
+        <input type="radio" v-model="gen" value="m">Masculino
+
+        <br>
+
+        <p :style="estilo">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae, nihil itaque sequi eaque magnam minima at veritatis vitae nisi corporis impedit dicta voluptatum dolores amet molestias nemo omnis doloremque tempore?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, officiis quis amet consectetur temporibus corrupti facere ducimus delectus magni, doloremque laborum dignissimos velit eos, vel aliquid earum placeat cum quas?
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni suscipit nulla quas, quia qui illum et, eaque perspiciatis dignissimos deserunt, neque aspernatur. Nostrum reiciendis vero nulla mollitia et distinctio accusantium.
+            
+        </p>
     </main>
     <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
     <script>
@@ -23,7 +49,8 @@
                 edad:0,
                 nombre: 'Pedro',
                 apellidoP: 'Mendez',
-                apellidoM: 'Jardines'
+                apellidoM: 'Jardines',
+                gen: 'f'
             },
             computed:{
                 rangoEdad: function(){
@@ -36,6 +63,19 @@
                 },
                 contanenacion:function(){
                     return this.nombre + ' ' + this.apellidoP + ' ' + this.apellidoM;
+                },
+                genero:function(){
+                   // return this.contanenacion === 'Pedro Mendez Jardines' ? 'masculino' : 'femenino'
+                   return this.gen === 'f' ? 'femenino' : 'masculino'
+                },
+                estilo:function(){
+                    //width: 300px; font-size:20px;color: chocolate; text-align: justify;
+                    return {
+                        width:'300px',
+                        fontSize: '20px',
+                        color: 'chocolate',
+                        textAlign: 'justify'
+                    }
                 }
             }
         })

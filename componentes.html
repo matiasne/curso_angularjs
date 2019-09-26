@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Componentes</title>
+</head>
+<body>
+    <div id='app'>
+        <h1>Instancia App</h1>
+        <mi-encabezado titulo="curso" subtitulo="desarrollo web con Vue" :contenido="datos" alineacion="justify"></mi-encabezado>
+        
+        <br>
+
+        <mi-tabla :lista="personas"></mi-tabla>
+        <mi-tabla :lista="pruebas"></mi-tabla>
+        
+
+    </div>
+    <hr>
+    <div id='app2'>
+        <h1>Instancia App2</h1>
+        <mi-tabla :lista="personas"></mi-tabla>
+        <br>
+        <mis-peliculas :lista="peliculas"></mis-peliculas>
+    </div>
+
+    <template id="tablaPersonas">
+        <div>
+            <table>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <tr v-for="dato in lista">
+                    <td>{{dato.nombre}}</td>
+                    <td>{{dato.direccion}}</td>
+                    <td>{{dato.telefono}}</td>
+                </tr>
+            </table>
+        </div>
+    </template>
+
+    <script type="text/template" id="tablaPersonas2">
+        <div>
+            <table>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <tr v-for="dato in lista">
+                    <td>{{dato.nombre}}</td>
+                    <td>{{dato.direccion}}</td>
+                    <td>{{dato.telefono}}</td>
+                </tr>
+            </table>
+        </div>
+    </script>
+
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+        //Globales. Funciona en cualquier instancia de Vue
+        //Locales. Funciona solo en una instanacia de Vue
+        Vue.component('mi-encabezado',{
+            props:['titulo','subtitulo','contenido','alineacion'],
+            template: `
+                <div style="width: 300px">
+                    <h2>{{titulo}}</h2>
+                    <h4>{{subtitulo}}</h4>
+                    <p :align="alineacion">{{contenido}}</p>
+                </div>
+            `
+        })
+
+        Vue.component('mi-tabla',{
+            props:['lista'],
+            //template: `#tablaPersonas` /*Con etiqueta Template*/
+            template: `#tablaPersonas2` /*Con Script*/
+        })
+
+        const app = new Vue({
+            el:'#app',
+            data:{
+                datos:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam dolor perspiciatis,'+
+                'veniam ipsum ducimus reprehenderit necessitatibus repudiandae porro soluta. Odio explicabo'+
+                 'voluptas neque odit optio laboriosam delectus quis facilis dolores',
+                personas:[
+                    {nombre:'pepe',direccion:'aa',telefono:'254554'},
+                    {nombre:'pepe2',direccion:'aahfdg',telefono:'55'}
+                ],
+                pruebas:[
+                    {nombre:'pepe',direccion:'aa',telefono:'254554'},
+                    {nombre:'pepe2',direccion:'aahfdg',telefono:'55'}   
+                ]
+            
+            }
+        })
+
+        const misPeliculas = {
+            props:['lista'],
+            template: `
+                <div>
+                    <table>
+                        <th>Titulo</th>
+                        <th>Genero</th>
+                        <tr v-for="dato in lista">
+                            <td>{{dato.titulo}}</td>
+                            <td>{{dato.genero}}</td>
+                        </tr>
+                    </table>
+                </div>
+            `
+        }
+
+        const app2 = new Vue({
+            el:'#app2',
+            data:{
+                datos:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam dolor perspiciatis,'+
+                'veniam ipsum ducimus reprehenderit necessitatibus repudiandae porro soluta. Odio explicabo'+
+                 'voluptas neque odit optio laboriosam delectus quis facilis dolores',
+                personas:[
+                    {nombre:'pepe',direccion:'aa',telefono:'254554'},
+                    {nombre:'pepe2',direccion:'aahfdg',telefono:'55'}
+                ],
+                peliculas:[
+                    {titulo:'pepe',genero:'aa'},
+                    {titulo:'pepe2',genero:'aahfdg'}
+                ]
+            },
+            components:{
+                'mis-peliculas':misPeliculas
+            }
+        })
+    </script>
+</body>
+</html>
