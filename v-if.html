@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if</title>
+</head>
+<body>
+    <mian id='app'>
+
+        <input type="number" v-model="datos">
+        <h1 v-if="datos == 1">El dia es muy nublado</h1>
+
+        <h1 v-else-if="datos == 2">El dia esta muy lluvioso</h1>
+        <h1 v-else>El dia esta muy soleado</h1>
+    </main>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                datos:2
+            }
+        })
+        /*
+        var x = 110
+
+        if(x==10){
+            alert("El valor es igual a 10");
+        }else{
+            alert("No es igual a 10");
+        }*/
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <mian id='app'>
+        <ul>
+            <li v-for="p of datos">{{p.valor}} -- {{p.id}} </li>
+        </ul>
+        
+        <select v-model="datos.id">
+            <option v-for="p of datos" :value="p.id">{{p.valor}}</option>
+        </select>
+        <br>
+
+        <input type="text" :value="datos.id">
+    </main>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+    const app = new Vue({
+            el:'#app',
+            data:{
+                datos:[
+                    {valor:'Uvas',id:1},
+                    {valor:'Banana',id:2},
+                    {valor:'Manzana',id:3}
+                ]
+            }
+    })
+    </script>
+    
+</body>
+</html>

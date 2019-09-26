@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Computed</title>
+</head>
+<body>
+    
+    <mian id='app'>
+        <h2>Escribe tu edad:</h2>
+        <input type="number" v-model="edad">
+        <div v-html="rangoEdad"></div><br>
+        
+        <h3>{{contanenacion}}</h3>
+    </main>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                edad:0,
+                nombre: 'Pedro',
+                apellidoP: 'Mendez',
+                apellidoM: 'Jardines'
+            },
+            computed:{
+                rangoEdad: function(){
+                    //return this.edad >= 18 ? '<h1>Eres mayor de edad</h1>' : '<h2>Eres menor de edad</h2>'
+                    if(this.edad >= 18){
+                        return '<h1>Eres mayor de edad</h1>';
+                    }else{
+                        return '<h2>Eres menor de edad</h2>';
+                    }
+                },
+                contanenacion:function(){
+                    return this.nombre + ' ' + this.apellidoP + ' ' + this.apellidoM;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
