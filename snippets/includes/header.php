@@ -11,13 +11,19 @@
 <body>
     <main id='app'>
     
-    <nav class="blue">
-        <div class="nav-wrapper" v-if="menu === true"> 
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="../login/salir.php">Salir</a></li>
-
-            </ul>
-        </div>
-    </nav>
+        <nav class="blue">
+            <div class="nav-wrapper"  v-if="menu === true"> 
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="index.php"><i class="material-icons">home</i></a></li>
+                    <li><a href="alta.php"><i class="material-icons">add</i></a></li>
+                    <li><a href="index.php?cat=php">PHP</a></li>
+                    <li><a href="index.php?cat=css">CSS</a></li>
+                    <li><a href="index.php?cat=html5">HTML5</a></li>
+                    <li><a href="index.php?cat=vue">VUE</a></li>
+                    <li><a href="index.php?cat=mysql">MYSQL</a></li>
+                    <li><a href="../login/salir.php">Salir</a></li>
+                </ul>
+            </div>
+        </nav>
 
 

@@ -1,4 +1,4 @@
-const app = new Vue({
+var app = new Vue({
     el:'#app',
     data:{
         pass:'',
@@ -18,14 +18,14 @@ const app = new Vue({
                     this.direccionamiento()
                 })
             }else{
-               swal('Los password no son iguales');
+                Swal.fire('Los password no son iguales');
             }
         },
         direccionamiento(){
             if(this.respuesta == 'success'){
                 location.href= 'index.php'
             }else{
-                swal('No se pudo registrar');
+                Swal.fire('No se pudo registrar');
             }
         },
         validarCorreo(){
@@ -38,11 +38,11 @@ const app = new Vue({
                     if(res.data == 'success'){
                         this.boton = ' btn blue';
                     }else{
-                        swal('El Correo Electronico ya Existe');
+                        Swal.fire('El Correo Electronico ya Existe');
                     }
                 })
             }else{
-                swal('Escribe el correo de forma Correcta');
+                Swal.fire('Escribe el correo de forma Correcta');
             }
             
         },
@@ -58,7 +58,7 @@ const app = new Vue({
                if (res.data == 'success') {
                    location.href = '../principal'
                } else {
-                   swal('Usuario y/o contraseña incorrecta');
+                Swal.fire("Usuario y/o contraseña incorrecta!")
                }
             })
         }
