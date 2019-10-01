@@ -14,7 +14,7 @@ export default{
             })
             .then((acceptar)=>{
                 if(acceptar){
-                    axios.get('http://localhost/curso_angularjs/snippetWebpack/api/crud/eliminar.php?id=' + id)
+                    axios.get('https://proywebpack.000webhostapp.com/snippetWebpack/api/crud/eliminar.php?id=' + id)
                     .then(res=>{
                         if (res.data == 'success') {
                            swal("Post eliminado");

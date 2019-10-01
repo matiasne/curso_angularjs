@@ -53,7 +53,7 @@ export default {
         registro(){
             if(this.pass == this.passC){
                 const form = document.getElementById('formRegistro')
-                axios.post('http://localhost/curso_angularjs/snippetWebpack/api/loginRegistro/registro.php', new FormData(form))
+                axios.post('https://proywebpack.000webhostapp.com/snippetWebpack/api/loginRegistro/registro.php', new FormData(form))
                 .then(res => {
                     this.respuesta = res.data
                     this.direccionamiento()
@@ -73,7 +73,7 @@ export default {
             if(this.validEmail(this.correo)){
                 const formData = new FormData()
                 formData.append('correo',this.correo);
-                axios.post('http://localhost/curso_angularjs/snippetWebpack/api/loginRegistro/validarEmail.php', formData)
+                axios.post('https://proywebpack.000webhostapp.com/snippetWebpack/api/loginRegistro/validarEmail.php', formData)
                 .then(res => {
                     this.respuesta = res.data
                     if(res.data == 'success'){

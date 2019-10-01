@@ -8,7 +8,7 @@
 
         $extension = '';
 
-        $ruta= 'http://localhost/curso_angularjs/snippetWebpack/api/loginRegistro/foto_perfil';
+        $ruta= 'https://proywebpack.000webhostapp.com/snippetWebpack/api/loginRegistro/foto_perfil';
 
         $archivo = $_FILES['foto']['tmp_name'];
 
@@ -29,7 +29,7 @@
             }
             
         }else{
-            $ruta= 'http://localhost/curso_angularjs/snippetWebpack/api/loginRegistro/foto_perfil/perfil.png';
+            $ruta= 'https://proywebpack.000webhostapp.com/snippetWebpack/api/loginRegistro/foto_perfil/perfil.png';
         }
 
 

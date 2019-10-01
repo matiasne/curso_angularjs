@@ -71,14 +71,14 @@ export default {
     methods:{
         getUser(){
             const token = JSON.parse(this.$localStorage.get('token'))
-            axios.get('http://localhost/curso_angularjs/snippetWebpack/api/crud/getUser.php?token=' + token)
+            axios.get('https://proywebpack.000webhostapp.com/snippetWebpack/api/crud/getUser.php?token=' + token)
                 .then(res=>{
                     this.userPost = res.data
             })
         },
         getCategoria(){
             const token = JSON.parse(this.$localStorage.get('token'))
-            axios.get('http://localhost/curso_angularjs/snippetWebpack/api/crud/getPost.php')
+            axios.get('https://proywebpack.000webhostapp.com/snippetWebpack/api/crud/getPost.php')
             .then(res=>{
                 this.listar = res.data
             })

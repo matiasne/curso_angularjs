@@ -28,7 +28,7 @@
                 <p>{{item.descripcion}}</p>
             </div>
             <div class="card-action">
-                <a v-if="item.user == userPost" :href="'/curso_angularjs/snippets/principal/editar.php?id=' + item.id">Editar</a>
+                <a v-if="item.user == userPost" :href="'https://proyectovue.000webhostapp.com/principal/editar.php?id=' + item.id">Editar</a>
                 <a v-if="item.user == userPost" href="#" @click="eliminar(item.id)">Eliminar</a>
                 <a href="#" class="copiar" :data-clipboard-target="'#copy' + item.id">Copiar</a>
             </div>

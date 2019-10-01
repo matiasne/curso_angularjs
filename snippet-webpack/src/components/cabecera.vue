@@ -25,7 +25,7 @@ export default {
     methods:{
         salir(){
             const token = JSON.parse(this.$localStorage.get('token'))
-            axios.get('http://localhost/curso_angularjs/snippetWebpack/api/loginRegistro/salir.php?token=' + token)
+            axios.get('https://proywebpack.000webhostapp.com/snippetWebpack/api/loginRegistro/salir.php?token=' + token)
             .then(res => {
                 if(res.data == 'success'){
                     this.$localStorage.remove('token');

@@ -26,7 +26,7 @@
                 <p>{{item.descripcion}}</p>
             </div>
             <div class="card-action">
-                <a v-if="item.user == userPost" :href="'/curso_angularjs/snippets/principal/editar.php?id=' + item.id">Editar</a>
+                <a v-if="item.user == userPost" :href="'https://proywebpack.000webhostapp.com/snippets/principal/editar.php?id=' + item.id">Editar</a>
                 <a v-if="item.user == userPost" href="#" @click="eliminar(item.id)">Eliminar</a>
                 <button  v-clipboard="item.codigo" class="btn blue">Copiar</button>
             </div>
@@ -76,14 +76,14 @@ export default {
     methods:{
         getUser(){
             const token = JSON.parse(this.$localStorage.get('token'))
-            axios.get('http://localhost/curso_angularjs/snippetWebpack/api/crud/getUser.php?token=' + token)
+            axios.get('https://proywebpack.000webhostapp.com/snippetWebpack/api/crud/getUser.php?token=' + token)
                 .then(res=>{
                     this.userPost = res.data
             })
         },
         getCategoria(){
             const cat = this.$route.params.cat
-            axios.get('http://localhost/curso_angularjs/snippetWebpack/api/crud/getCategoria.php?cat=' + cat)
+            axios.get('https://proywebpack.000webhostapp.com/snippetWebpack/api/crud/getCategoria.php?cat=' + cat)
             .then(res=>{
                 this.listar = res.data
             })

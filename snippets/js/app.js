@@ -26,7 +26,7 @@ const app = new Vue({
     methods:{
         alta(){
             const form = document.getElementById('altaPost');
-            axios.post('../api/crud/altaPost.php', new FormData(form))
+            axios.post('https://proyectovue.000webhostapp.com/api/crud/altaPost.php', new FormData(form))
             .then(res => {
                 this.respuesta = res.data
 
@@ -58,7 +58,7 @@ const app = new Vue({
                 });
                 this.itemId = getVars;
 
-                axios.get('http://localhost/curso_angularjs/snippets/api/crud/getId.php?id=' + this.itemId.id)
+                axios.get('https://proyectovue.000webhostapp.com/api/crud/getId.php?id=' + this.itemId.id)
                 .then(res=>{
                     this.formEditar = res.data
                 })
@@ -87,7 +87,7 @@ const app = new Vue({
             })
             .then((acceptar)=>{
                 if(acceptar){
-                    axios.get('http://localhost/curso_angularjs/snippets/api/crud/eliminar.php?id=' + id)
+                    axios.get('https://proyectovue.000webhostapp.com/api/crud/eliminar.php?id=' + id)
                     .then(res=>{
                         if (res.data == 'success') {
                            Swal.fire("Post eliminado");
@@ -103,7 +103,7 @@ const app = new Vue({
             })
         },
         getUser(){
-            axios.get('http://localhost/curso_angularjs/snippets/api/crud/getUser.php')
+            axios.get('https://proyectovue.000webhostapp.com/api/crud/getUser.php')
                 .then(res=>{
                     this.userPost = res.data
             })
@@ -123,12 +123,12 @@ const app = new Vue({
                 });
                 this.itemId = getVars;
 
-                axios.get('http://localhost/curso_angularjs/snippets/api/crud/getCategoria.php?cat=' + this.itemId.cat)
+                axios.get('https://proyectovue.000webhostapp.com/api/crud/getCategoria.php?cat=' + this.itemId.cat)
                 .then(res=>{
                     this.listar = res.data
                 })
             }else{
-                axios.get('http://localhost/curso_angularjs/snippets/api/crud/getPost.php')
+                axios.get('https://proyectovue.000webhostapp.com/api/crud/getPost.php')
                 .then(res => {
                     this.listar = res.data
                 })

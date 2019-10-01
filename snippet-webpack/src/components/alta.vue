@@ -50,7 +50,7 @@ export default {
     methods:{
          alta(){
             const form = document.getElementById('altaPost');
-            axios.post('http://localhost/curso_angularjs/snippetWebpack/api/crud/altaPost.php', new FormData(form))
+            axios.post('https://proywebpack.000webhostapp.com/snippetWebpack/api/crud/altaPost.php', new FormData(form))
             .then(res => {
                 this.respuesta = res.data
 

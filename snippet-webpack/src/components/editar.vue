@@ -53,14 +53,14 @@ export default {
     methods:{
          getId(){
             const id = this.$route.params.id;
-            axios.get('http://localhost/curso_angularjs/snippetWebpack/api/crud/getId.php?id=' + id)
+            axios.get('https://proywebpack.000webhostapp.com/snippetWebpack/api/crud/getId.php?id=' + id)
             .then(res=>{
                 this.formEditar = res.data
             })
         },
         editar(){
             const form = document.getElementById('editarPost');
-            axios.post('http://localhost/curso_angularjs/snippetWebpack/api/crud/editarPost.php', new FormData(form))
+            axios.post('https://proywebpack.000webhostapp.com/snippetWebpack/api/crud/editarPost.php', new FormData(form))
             .then(res => {
                 this.respuesta = res.data
 

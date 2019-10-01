@@ -34,7 +34,7 @@ export default {
   methods:{
     login(){
         const form = document.getElementById('inicioSesion')
-        axios.post('http://localhost/curso_angularjs/snippetWebpack/api/loginRegistro/login.php', new FormData(form))
+        axios.post('https://proywebpack.000webhostapp.com/snippetWebpack/api/loginRegistro/login.php', new FormData(form))
         .then(res => {
             this.respuesta = res.data
           if (res.data.res == 'success') {

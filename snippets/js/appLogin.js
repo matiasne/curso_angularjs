@@ -12,7 +12,7 @@ var app = new Vue({
         registro(){
             if(this.pass == this.passC){
                 const form = document.getElementById('formRegistro')
-                axios.post('../api/loginRegistro/registro.php', new FormData(form))
+                axios.post('https://proyectovue.000webhostapp.com/api/loginRegistro/registro.php', new FormData(form))
                 .then(res => {
                     this.respuesta = res.data
                     this.direccionamiento()
@@ -32,7 +32,7 @@ var app = new Vue({
             if(this.validEmail(this.correo)){
                 const formData = new FormData()
                 formData.append('correo',this.correo);
-                axios.post('../api/loginRegistro/validarEmail.php', formData)
+                axios.post('https://proyectovue.000webhostapp.com/api/loginRegistro/validarEmail.php', formData)
                 .then(res => {
                     this.respuesta = res.data
                     if(res.data == 'success'){
@@ -52,7 +52,7 @@ var app = new Vue({
         },
         login(){
             const form = document.getElementById('inicioSesion')
-            axios.post('../api/loginRegistro/login.php', new FormData(form))
+            axios.post('https://proyectovue.000webhostapp.com/api/loginRegistro/login.php', new FormData(form))
             .then(res => {
                 this.respuesta = res.data
                if (res.data == 'success') {
